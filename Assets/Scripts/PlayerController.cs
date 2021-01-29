@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     public Collider2D Collider;
 
+    public AudioSource TakePhotoAudioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKeyDown(TakePhoto))
         {
+            TakePhotoAudioSource?.Play();
             var contactFilter = new ContactFilter2D();
             List<Collider2D> overlappingColliders = new List<Collider2D>();
             var foundColliders = Collider.OverlapCollider(contactFilter, overlappingColliders);
