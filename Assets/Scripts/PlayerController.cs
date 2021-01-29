@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class PlayerController : MonoBehaviour
 {
     public float MovementSpeed = 10.0f;
 
+    public KeyCode TakePhoto = KeyCode.Space;
+
+    public Collider2D Collider;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        Collider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -38,5 +43,16 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(movementVector);
 
+        if(Input.GetKeyDown(TakePhoto))
+        {
+            var contactFilter = new ContactFilter2D();
+            List<Collider2D> overlappingColliders = new List<Collider2D>();
+            var foundColliders = Collider.OverlapCollider(contactFilter, overlappingColliders);
+            foreach(var collider in overlappingColliders)
+            {
+                collider.GetComponent<PhotoSpot>()?.TakePhoto();
+                break;
+            }
+        }
     }
 }
