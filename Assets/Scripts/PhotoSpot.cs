@@ -7,6 +7,12 @@ public class PhotoSpot : MonoBehaviour
 {
     public GameObject Photo;
 
+
+    public bool IsComplete
+    {
+        get;
+        private set;
+    }
  
     // Start is called before the first frame update
     void Start()
@@ -21,7 +27,8 @@ public class PhotoSpot : MonoBehaviour
 
     public void TakePhoto()
     {
-        Debug.Log("Correct photo taken");
+        Debug.Log($"Correct photo taken for {name}");
+        IsComplete = true;
     }
 
 
