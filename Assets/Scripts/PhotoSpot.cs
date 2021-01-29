@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PhotoSpot : MonoBehaviour
 {
-    public GameObject Photo;
+    public Sprite Photo;
 
 
     public bool IsComplete

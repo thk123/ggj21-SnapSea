@@ -9,6 +9,8 @@ public class GameState : MonoBehaviour
     private PhotoSpot NextPhoto;
     private Queue<PhotoSpot> RemainingPhotos;
 
+    public UIController UIController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +40,8 @@ public class GameState : MonoBehaviour
     {
         if(NextPhoto != null && NextPhoto.IsComplete)
         {
-            if(RemainingPhotos.Count > 0)
+            UIController.ShowTakenPhoto(NextPhoto);
+            if (RemainingPhotos.Count > 0)
             {
                 ActivateNextPhoto();
             }
