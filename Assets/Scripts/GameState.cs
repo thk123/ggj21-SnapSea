@@ -33,6 +33,7 @@ public class GameState : MonoBehaviour
     {
         NextPhoto = RemainingPhotos.Dequeue();
         NextPhoto.gameObject.SetActive(true);
+        UIController.ShowNextPhoto(NextPhoto);
     }
 
     // Update is called once per frame
